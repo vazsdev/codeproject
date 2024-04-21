@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/object-sans" rel="stylesheet">
+    <link rel="stylesheet" href="main-page-css.css">
+    <title>&lt;Code.Project&gt;</title>    
+</head>
+<body>
+    <header>
+        <h1>&lt;Code.Project&gt;</h1>
+        <button class="menu-toggle">☰</button>
+        <nav class="menu">
+            <a href="projetos.html">Meus Projetos</a>
+            <a href="community.html">Comunidade</a>
+            <a href="#">Criar Post</a>
+            <div id="perfil_div">
+                <a href="perfil_manager.html" id="perfil_a"><img class="img_perfil" src="perfil.jpg" alt="imagem perfil"></a>
+                <p id="username_p">username</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 id="wlcm_h1">Bem vindo ao &lt;Code.Project&gt;!</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et consequatur sequi similique rem nulla debitis quos? Accusamus dolore vitae ut nisi placeat, officia odit qui dicta culpa quidem natus quo? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio soluta architecto esse, omnis debitis similique dolorem suscipit possimus, maiores nostrum, sint quibusdam numquam natus dicta doloremque illo doloribus delectus? Error?</p>
+        <h2>Lorem ipsum</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos facere dicta ipsa quo saepe veritatis omnis ea reiciendis officia quas quam reprehenderit accusantium fugit, sed necessitatibus perspiciatis alias, itaque quasi? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto culpa impedit laudantium, officiis similique repudiandae vel quas totam consequatur necessitatibus at, beatae praesentium numquam! Inventore quaerat iure vel consectetur dolore?</p>
+
+        <div id="project-list" class="project-list">
+            <!-- Aqui serão exibidos os projetos -->
+        </div>
+    </div>
+    
+    <footer>
+        &copy; 2024 Code.Project. Todos direitos reservados.
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const menu = document.querySelector(".menu");
+
+            menuToggle.addEventListener("click", function() {
+                menu.classList.toggle("open");
+            });
+
+            // Fechar o menu quando clicar fora dele
+            document.addEventListener("click", function(event) {
+                if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    menu.classList.remove("open");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

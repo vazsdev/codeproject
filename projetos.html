@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/object-sans" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/ayu-dark.css">
+    <link rel="stylesheet" href="node_modules/codemirror/mode/javascript/javascript.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="projetos-css.css">
+    <title>Meus Projetos | CodeHub</title>
+</head>
+<body>
+    <div id="divHeader">
+        <header>
+            <h1>&lt;Code.Project&gt; / Meus Projetos</h1>
+            <nav class="menu">
+                <a href="projetos.html">Meus Projetos</a>
+                <a href="community.html">Comunidade</a>
+                <a href="#">Criar Post</a>
+                <div id="perfil_div">
+                    <a href="perfil_manager.html" id="perfil_a"><img class="img_perfil" src="perfil.jpg" alt="imagem perfil"></a>
+                    <p id="username_p">username</p>
+                </div>
+            </nav>
+            <button class="menu-toggle">☰</button>
+        </header>
+    </div>
+    <button id="voltarAoTopo" onclick="voltarAoTopo()">&uarr;</button>
+    <a href="main_page.html" class="return-button">Voltar para a página inicial</a>
+    <main class="main">
+        <div class="side_container">
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+            <button type="button" id="teste">Teste</button>
+        </div>
+        <div class="container">
+            <h1 class="project-title">mostre_sua_criatividade</h1>
+            <div class="project-name">
+                <label for="project-name"><strong>Nome do Projeto</strong></label>
+                <input type="text" id="project-name" class="project-name-input" placeholder="Nome do projeto...">
+            </div>
+            <div class="project-language">
+                <label for="project-language"><strong>Linguagem</strong></label>
+                <select id="project-language" class="project-language-dropdown">
+                    <option value="javascript">JavaScript</option>
+                    <option value="htmlmixed">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="php">PHP</option>
+                    <!-- Adicione outras opções conforme necessário -->
+                </select>
+            </div>
+            <div class="project-type">
+                <label for="project-type"><strong>Tipo de Código</strong></label>
+                <select id="project-type" class="project-type-dropdown">
+                    <option value="open-source">Código Aberto</option>
+                    <option value="closed-source">Código Fechado</option>
+                </select>
+            </div>
+            <div class="project-desc">
+                <label for="project-desc"><strong>Descrição do Projeto</strong></label>
+                <textarea name="project-desc" id="project-desc-input" cols="30" rows="10" placeholder="Descrição do Projeto..."></textarea>
+            </div>
+            <div id="error_empty_property" style="background-color: red;
+            width: max-content; padding: 10px 20px; color: white; border-radius: 10px; margin: 1% auto 1% auto; display: none;"></div>
+            <textarea id="code-editor" class="code-editor" onmouseover="aumentarTamanho()" onmouseout="reduzirTamanho()"></textarea>
+            <button id="post-button" class="post-button">Publicar</button>
+
+            <div id="post-list" class="post-list">
+                <!-- Aqui serão exibidos os posts -->
+            </div>
+
+            <div class="tabs">
+                <button id="todos-btn" class="tablink" onclick="openTabAndSelect(this, 'todos')">Todos</button>
+                <button class="tablink" onclick="openTabAndSelect(this, 'abertos')">Abertos</button>
+                <button class="tablink" onclick="openTabAndSelect(this, 'fechados')">Fechados</button>
+                <button id="clear-projects-button" class="clear-projects-button" onclick="clearProjects(), r">Limpar Projetos</button>
+            </div>
+            <div id="todos" class="tabcontent">
+                <p style="font-family: 'Object Sans Mono', sans-serif; text-align: center; font-size: 12px;">*Para abrir os projetos, vá a sua aba respectiva em abertos ou fechados.</p>
+                <h3 style="margin-top: 10%; text-align: center; background-color: #1f1f1f; padding: 10px 20px;
+                width: max-content; margin-left: auto;
+                margin-right: auto; border-radius: 10px; color: white">Todos os Projetos</h3>
+                <div id="todos-projetos" class="project-list">
+                    <!-- Projetos serão exibidos aqui -->
+                </div>
+            </div>
+        
+            <div id="abertos" class="tabcontent">
+                <h3 style="margin-top: 10%; text-align: center; background-color: #1f1f1f; padding: 10px 20px;
+                width: max-content; margin-left: auto;
+                margin-right: auto; border-radius: 10px; color: white">Projetos Abertos</h3>
+                <div id="abertos-projetos" class="project-list">
+                    <!-- Projetos abertos serão exibidos aqui -->
+                </div>
+            </div>
+        
+            <div id="fechados" class="tabcontent">
+                <h3 style="margin-top: 10%; text-align: center; background-color: #1f1f1f; padding: 10px 20px;
+                width: max-content; margin-left: auto;
+                margin-right: auto; border-radius: 10px; color: white">Projetos Fechados</h3>
+                    <div id="fechados-projetos" class="project-list">
+                        <!-- Projetos fechados serão exibidos aqui -->
+                    </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>&copy; 2024 ProjectHub. Todos direitos reservados.</footer>
+            <script src="node_modules/codemirror/lib/codemirror.js"></script>
+            <script src="node_modules/codemirror/mode/javascript/javascript.js"></script>
+            <script src="node_modules/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+            <script src="node_modules/codemirror/mode/css/css.js"></script>
+            <script src="node_modules/codemirror/mode/python/python.js"></script>
+            <script src="node_modules/codemirror/mode/clike/clike.js"></script>
+            <script src="node_modules/codemirror/mode/php/php.js"></script>
+            <!-- Adicione outros modos de linguagem conforme necessário -->
+
+    <script>
+        //scripts a serem realocados para um arquivo script.js
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("voltarAoTopo").style.display = "block";
+            } else {
+                document.getElementById("voltarAoTopo").style.display = "none";
+            }
+        }
+
+        function voltarAoTopo() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const menu = document.querySelector(".menu");
+
+            menuToggle.addEventListener("click", function() {
+                menu.classList.toggle("open");
+            });
+
+            // Fechar o menu quando clicar fora dele
+            document.addEventListener("click", function(event) {
+                if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    menu.classList.remove("open");
+                }
+            });
+        });
+
+
+
+        /////////////////////////////////////////////////////////////////////////////
+
+        var selectedMode = document.querySelector('.project-language-dropdown').value    
+        var codeEditorTextarea = document.querySelector('#code-editor')
+        var editor = CodeMirror.fromTextArea(codeEditorTextarea, {
+            lineNumbers: true,
+            mode: selectedMode,
+            theme: 'ayu-dark',
+            lineWrapping: true // Habilita a quebra de linha
+        });
+
+        /////////////////////////////////////////////////////////////////////////////
+
+        // Recupera o conteúdo salvo do localStorage (se existir)
+        var savedContent = sessionStorage.getItem('codeEditorContent');
+
+        // Define o conteúdo inicial do editor (se existir)
+        if (savedContent) {
+            editor.setValue(savedContent);
+        }
+
+        // Adiciona um evento de listener para detectar mudanças no conteúdo do editor
+        editor.on("change", function() {
+            // Salva o conteúdo atual do editor no localStorage
+            sessionStorage.setItem('codeEditorContent', editor.getValue());
+        });
+
+        //////////////////////////////////////////////////////////////////////////////
+        function openTabAndSelect(element, tabName) {
+            openTab(tabName);
+            selecionarBotao(element);
+        }
+
+        function openTab(tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+
+        function selecionarBotao(botaoClicado) {
+            var botoes = document.querySelectorAll('.tablink');
+            for (var i = 0; i < botoes.length; i++) {
+                // Verificar se o botão atual é o botão clicado
+                if (botoes[i] === botaoClicado) {
+                    // Adicionar classe ao botão clicado
+                    botaoClicado.classList.add('selecionado');
+                } else {
+                    // Remover classe dos outros botões
+                    botoes[i].classList.remove('selecionado');
+                }
+            }
+        }
+
+        //////////////////////////////////////////////////////////////
+
+        function saveProject() {
+            // Obtém os valores dos campos
+            var projectName = document.getElementById("project-name").value;
+            var projectLanguage = document.getElementById("project-language").value;
+            var projectType = document.getElementById("project-type").value;
+            var projectContent = localStorage.getItem('codeEditorContent');
+            var projectDesc = document.getElementById("project-desc-input").value
+            console.log(projectContent)
+
+            var error_empty_property = document.querySelector('#error_empty_property')
+
+            error_empty_property.style.display = 'none'
+            error_empty_property.innerHTML = ''
+
+            if (projectName == '') {
+                error_empty_property.style.display = 'block'
+                error_empty_property.innerHTML = 'Preencha todos campos.'    
+            } else {
+
+
+            // Cria um objeto com os dados do projeto
+            var projectData = {
+                name: projectName,
+                language: projectLanguage,
+                type: projectType,
+                content: projectContent,
+                desc: projectDesc
+            };
+            // Obtém a lista de projetos do localStorage ou cria uma   nova lista vazia
+            var projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+            // Adiciona o novo projeto à lista de projetos
+            projects.push(projectData);
+
+            // Salva a lista atualizada de projetos no localStorage
+            localStorage.setItem("projects", JSON.stringify(projects));
+
+            // Atualiza a exibição dos projetos nas abas
+            displayProjects();
+            }
+        }
+
+        //////////////////////////////////////////////////////////////
+        // Atualiza a exibição dos projetos nas abas
+        displayProjects();
+    
+        // Função para exibir os projetos nas abas correspondentes
+        
+        //////////////////////////////////////////////////////////////
+
+        function displayProjects() {
+            // Função para criar um link para abrir os detalhes do projeto em uma nova aba
+            function createProjectLink(project) {
+                var link = document.createElement("a");
+                link.innerHTML = `<div><p><strong>Visualizar em outra aba</strong></p></div>`;
+                link.href = "project-details.html?content=" + encodeURIComponent(project.content);
+                link.target = "_blank";
+
+                link.style.marginTop = '-18px'
+                link.style.marginLeft = 'auto'
+                link.style.marginRight = '5px'
+                link.style.width = 'max-content'
+                link.style.fontFamily = '"Object Sans Mono", sans-serif;'
+                link.style.color = '#0077b5'
+
+                // Adicionar o elemento link ao documento
+                document.body.appendChild(link);
+
+                // Adicionando efeito hover por JavaScript após adicionar o link ao documento
+                link.addEventListener("mouseenter", function() {
+                    this.style.color = "green";
+                });
+                link.addEventListener("mouseleave", function() {
+                    this.style.color = "#0077b5";
+                });
+
+                return link;
+            }
+
+            // Obtém a lista de projetos do localStorage
+            var projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+            // Limpa as abas de projetos
+            document.getElementById("todos-projetos").innerHTML = "";
+            document.getElementById("abertos-projetos").innerHTML = "";
+            document.getElementById("fechados-projetos").innerHTML = "";
+
+            // Percorre os projetos e os adiciona às abas correspondentes
+            projects.forEach(function(project) {
+                var menu_toggle = '☰'
+                var projectElement = document.createElement("div");
+                projectElement.innerHTML = `<div><strong>${project.name}</strong> / ${project.language} / ${project.type} / <br><br><strong>Descrição</strong><br><br>${project.desc}`
+
+                projectElement.style.backgroundColor = "#1f1f1f"
+                projectElement.style.padding = '5px 0px 0px 10px'
+                projectElement.style.borderRadius = '5px'
+                projectElement.style.margin = '1%'
+                projectElement.style.display = 'flex'
+                projectElement.style.color = '#eee'
+
+                projectElement.addEventListener("mouseenter", function(event) {
+                    this.style.backgroundColor = '#0c0c0c'
+                    this.style.color = 'gray'
+                    this.style.cursor = 'pointer'
+                    this.style.borderRadius = '5px'
+                })
+                projectElement.addEventListener("mouseleave", function(event) {
+                    this.style.backgroundColor = '#1f1f1f'
+                    this.style.color = '#eee'
+                })
+
+                // Variável para controlar se o editor está aberto
+                var editorAberto = false;
+                var editor_display = null; // Guarda uma referência ao editor para poder fechar posteriormente
+
+                projectElement.addEventListener('click', function() {
+                    if (!editorAberto) {
+                        // Se o editor não estiver aberto, abra-o
+                        contentLoad(project);
+                        editorAberto = true;
+                    } else {
+                        // Se o editor estiver aberto, feche-o
+                        closeEditor();
+                        editorAberto = false;
+                    }
+                });
+
+                function contentLoad() {
+                    var project_content_display = project.content;
+                    console.log(project_content_display);
+
+                    // Cria um novo elemento <div> para conter o editor
+                    var editorContainer = document.createElement("div");
+
+                    // Adiciona o novo elemento ao documento logo após o projectElement
+                    projectElement.insertAdjacentElement('afterend', editorContainer);
+
+                    // Cria o editor do CodeMirror com o conteúdo do projeto e line wrapping ativado
+                    editor_display = CodeMirror(editorContainer, {
+                        value: project_content_display,
+                        mode: "javascript",
+                        lineNumbers: true,
+                        theme: "ayu-dark", // Escolha o tema desejado
+                        lineWrapping: true, // Ativa a quebra de linha automática
+                        readOnly: true // Define o editor como somente leitura
+                    });
+                }
+
+                function closeEditor() {
+                    // Remove o elemento do editor do DOM
+                    editor_display.getWrapperElement().remove();
+                }
+
+
+
+
+                // Cria um link para abrir os detalhes do projeto em uma nova aba
+                var projectLink = createProjectLink(project);
+                projectElement.appendChild(projectLink);
+
+                if (project.type === "open-source") {
+                    document.getElementById("abertos-projetos").appendChild(projectElement);
+                } else {
+                    document.getElementById("fechados-projetos").appendChild(projectElement);
+                }
+
+                document.getElementById("todos-projetos").appendChild(projectElement.cloneNode(true));
+            });
+        }
+        // Após exibir os projetos, chama a função openTab() para atualizar as abas
+        openTab('todos');
+
+        //////////////////////////////////////////////////////////////
+
+        // Função para limpar todos os projetos salvos
+        function clearProjects() {
+            // Remove todos os projetos do localStorage
+            localStorage.removeItem("projects");
+            // Recarrega a página para refletir as alterações
+            location.reload();
+
+            // Limpa a lista de projetos na página
+            var projectListContainer = document.getElementById("project-list");
+            projectListContainer.innerHTML = "";
+        }
+
+
+        // Adiciona um evento de clique ao botão "Publicar"
+        document.getElementById("post-button").addEventListener("click", function() {
+            // Salva o projeto
+            saveProject();
+        });
+    </script>
+</body>
+</html>

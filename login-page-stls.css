@@ -1,0 +1,106 @@
+@import url('https://fonts.cdnfonts.com/css/object-sans');
+
+
+        body {
+            font-family: 'Object Sans Mono', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #080808; /* Cor de fundo mais suave */
+            color: #1f1f1f; /* Cor do texto mais suave */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            display: block;
+        }
+
+
+        #header-content {
+            display: flexbox;
+            width: auto;
+            background-color: #3a3a3a; /* Cor de fundo branca para o formulário de login */
+            color: white; /* Cor do texto mais suave */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            justify-content: center;
+        }
+
+        header {
+            background-color: #3a3a3a; /* Cor de cabeçalho cinza escuro */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .login-container {
+            display: flex;
+            width: 300px;
+            background-color: #2B2B2B; /* Cor de fundo branca para o formulário de login */
+            color: white; /* Cor do texto mais suave */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: absolute;
+            top: 55%; /* Define a posição vertical no meio da página */
+            left: 50%; /* Define a posição horizontal no meio da página */
+            transform: translate(-50%, -50%); /* Move a div de volta metade da sua largura e altura */
+        }
+
+        .login-form {
+            display: flexbox;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-form input {
+            width: calc(100% - 20px); /* Largura ajustada para compensar o padding */
+            padding: 10px;
+            margin: 0 auto; /* Centralizar o input horizontalmente */
+            margin-bottom: 15px;
+            border: 1px solid #ccc; /* Cor da borda mais suave */
+            border-radius: 5px;
+            background-color: #f9f9f9; /* Cor de fundo mais suave */
+            color: #1f1f1f; /* Cor do texto mais suave */
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0077b5; /* Cor de fundo azul */
+            color: #fff; /* Cor do texto branco */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-form button:hover {
+            background-color: #005183; /* Cor de fundo azul mais escura no hover */
+        }
+
+        .login-form p {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .login-form a {
+            color: #0077b5; /* Cor do texto azul */
+            text-decoration: none;
+        }
+
+        .login-form a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #080808; /* Cor de rodapé cinza escuro */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }

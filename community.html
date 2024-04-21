@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/ayu-dark.css">
+    <link rel="stylesheet" href="node_modules/codemirror/mode/javascript/javascript.js">
+    <link rel="stylesheet" href="community-stls.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/javascript/javascript.min.js"></script>
+    <title>Comunidade | &lt;Code.Project&gt;</title>
+</head>
+<body>
+    <header>
+        <h1>&lt;Code.Project&gt; / Comunidade</h1>
+        <nav class="menu">
+            <a href="projetos.html">Meus Projetos</a>
+            <a href="community.html">Comunidade</a>
+            <a href="#">Criar Post</a>
+            <div id="perfil_div">
+                <a href="perfil_manager.html" id="perfil_a"><img class="img_perfil" src="perfil.jpg" alt="imagem perfil"></a>
+                <p id="username_p">username</p>
+            </div>
+        </nav>
+        <button class="menu-toggle">☰</button>
+    </header>
+    <button id="voltarAoTopo" onclick="voltarAoTopo()">&uarr;</button>
+    <a href="main_page.html" class="return-button">Voltar para a página inicial</a>
+    <br>
+    <div id="project-list"></div>
+
+    <footer>&copy; 2024 Code.Project. Todos direitos reservados.</footer>
+
+    <script>
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("voltarAoTopo").style.display = "block";
+            } else {
+                document.getElementById("voltarAoTopo").style.display = "none";
+            }
+        }
+
+        function voltarAoTopo() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const menu = document.querySelector(".menu");
+
+            menuToggle.addEventListener("click", function() {
+                menu.classList.toggle("open");
+            });
+
+            // Fechar o menu quando clicar fora dele
+            document.addEventListener("click", function(event) {
+                if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    menu.classList.remove("open");
+                }
+            });
+        });
+
+
+
+        // Função para exibir os projetos na página
+        function displayProjects() {
+            
+            // Obtém a lista de projetos do localStorage
+            var projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+            // Limpa a lista de projetos na página
+            var projectListContainer = document.getElementById("project-list");
+            projectListContainer.innerHTML = "";
+
+            // Percorre os projetos e os adiciona à lista de projetos na página
+            projects.forEach(function(project) {
+                var projectElement = document.createElement("div");
+                var open_buton = document.createElement("button")
+
+                projectElement.innerHTML = `<div id='div_content_code' style="
+                background-color: transparent; padding: 5px 10px; border-radius: 5px; box-shadow: 0 0 3px 1px black;
+                margin: 5%;"><strong>${project.name}</strong> / ${project.language} / ${project.type}</div>`;
+                
+                open_buton.innerText = 'Abrir'
+                function estiloBotao() {
+                    open_buton.style.position = 'absolute'
+                    open_buton.style.cursor = 'pointer'
+                    open_buton.style.zIndex = '9999'
+                    open_buton.style.padding = '5px 20px'
+                    open_buton.style.borderRadius = '5px'
+                    open_buton.style.fontSize = '15px'
+                    open_buton.style.border = '1px solid white'
+                    open_buton.style.backgroundColor = '#222831'
+                    open_buton.style.color = 'white'
+                    return
+                }
+
+                estiloBotao()
+
+
+                // Função para calcular e definir a posição do botão
+                function definirPosicaoBotao() {
+                    // Obter as coordenadas da div pai
+                    var projectElementBounds = projectElement.getBoundingClientRect();
+
+                    // Definir o botão para ficar no canto direito superior da div pai
+                    open_buton.style.top = (projectElementBounds.top) + 'px';
+                    open_buton.style.left = (window.innerWidth - projectElementBounds.left) - 'px';
+                }
+
+                // Chamar a função para definir a posição inicial do botão
+                definirPosicaoBotao();
+
+                // Criar um MutationObserver para observar mudanças no DOM
+                var observer = new MutationObserver(function(mutationsList) {
+                // Quando ocorrer uma mutação, reposicionar o botão
+                    definirPosicaoBotao();
+                });
+
+                // Configurar o MutationObserver para observar mudanças no conteúdo do corpo do documento
+                observer.observe(document.body, { childList: true, subtree: true });
+
+                window.addEventListener('resize', definirPosicaoBotao);
+
+                projectElement.appendChild(open_buton)
+
+                open_buton.addEventListener('mouseover', function(event) {
+                    open_buton.style.backgroundColor = 'green'
+                    open_buton.style.color = 'white'
+                    open_buton.style.border = '1px solid green'
+                })
+                open_buton.addEventListener('mouseleave', function(event) {
+                    estiloBotao()
+                })
+
+                // Variável para controlar se o editor está aberto
+                var editorAberto = false;
+                var editor_display = null; // Guarda uma referência ao editor para poder fechar posteriormente
+
+                var projectElementDesc = document.createElement("div");
+                var projectElementDescH = document.createElement("h1")
+                var DescH = 'Descrição'
+
+                open_buton.addEventListener('click', function() {
+                    if (!editorAberto) {
+                        // Se o editor não estiver aberto, abra-o
+                        contentLoad(project);
+                        editorAberto = true;
+                        projectElement.appendChild(projectElementDescH)
+                        projectElement.appendChild(projectElementDesc)
+                        projectElementDescH.innerHTML = DescH
+                        projectElementDesc.innerHTML = project.desc;
+                        open_buton.innerHTML = 'Fechar' 
+
+                        open_buton.style.color = 'white'
+                        open_buton.style.border = '1px solid green'
+
+                        projectElement.style.backgroundColor = 'white'
+                        projectElement.style.borderRadius = '5px 5px 0 0'
+                        projectElement.style.marginTop = '5%'
+                        projectElement.style.color = "black"
+
+                        projectElementDescH.style.display = 'block'
+                        projectElementDescH.style.margin = '0 0 0 5%'
+                        projectElementDescH.style.fontSize = '20px'
+                        
+                        projectElementDesc.style.display = 'block'
+                        projectElementDesc.style.padding = '5px 10px'
+                        projectElementDesc.style.backgroundColor = 'white'
+                        projectElementDesc.style.borderRadius = '5px'
+                        projectElementDesc.style.margin = '4px 5% 5% 5%'
+                    } else {
+                        // Se o editor estiver aberto, feche-o
+                        closeEditor();
+                        editorAberto = false;
+                        open_buton.innerHTML = 'Abrir'
+                        projectElement.style.backgroundColor = 'transparent'
+                        projectElementDesc.style.display = 'none'
+                        projectElementDescH.style.display = 'none'
+
+                        open_buton.style.color = 'white'
+                        open_buton.style.border = '1px solid green'
+                    }
+                });
+
+
+                function contentLoad(project) {
+                    var project_content_display = project.content;
+                    console.log(project_content_display);
+
+                    // Cria um novo elemento <div> para conter o editor
+                    var editorContainer = document.createElement("div");
+
+                    // Adiciona o novo elemento ao documento
+                    projectElement.parentNode.insertBefore(editorContainer, projectElement.nextSibling);
+
+                    // Cria o editor do CodeMirror com o conteúdo do projeto e line wrapping ativado
+                    editor_display = CodeMirror(editorContainer, {
+                        value: project_content_display,
+                        mode: "javascript",
+                        lineNumbers: true,
+                        theme: "ayu-dark", // Escolha o tema desejado
+                        lineWrapping: true, // Ativa a quebra de linha automática
+                        readOnly: true // Define o editor como somente leitura
+                    });
+                }
+
+
+
+                function closeEditor() {
+                    // Remove o elemento do editor do DOM
+                    editor_display.getWrapperElement().remove();
+                }
+
+
+                projectListContainer.appendChild(projectElement);
+            });
+        }
+
+        // Chama a função para exibir os projetos ao carregar a página
+        displayProjects();
+    </script>
+</body>
+</html>

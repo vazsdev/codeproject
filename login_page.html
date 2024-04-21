@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/object-sans" rel="stylesheet">
+    <link rel="stylesheet" href="login-page-stls.css">
+    <title>Login - Code.Project</title>
+</head>
+<body>
+    <div id="header-content">
+        <header>
+            <h1>&lt;Code.Project&gt;</h1>
+        </header>
+    </div>
+    <div class="login-container">
+        <form class="login-form">
+            <h2>Login</h2>
+            <input type="text" id="user" placeholder="Usuário" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="button" onclick="user_validation()">Login</button>
+            <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2024 Code.Project. Todos direitos reservados.
+    </footer>
+
+    
+    <script>
+        function user_validation() {
+            let username = document.querySelector('#user').value
+            let password = document.querySelector('#password').value
+
+            const USER_VALID = 'admin'
+            const PASSWORD_VALID = '123'
+
+            if (username == USER_VALID && password == PASSWORD_VALID) {
+                window.location.href = 'main_page.html'
+            } else {
+                alert('Usuário ou senha incorretos. Tente novamente')
+            }
+        }
+    </script>
+</body>
+</html>

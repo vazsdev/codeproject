@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Projeto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="node_modules/codemirror/theme/ayu-dark.css">
+    <style>
+      /* Estilos opcionais para o editor */
+      .CodeMirror {
+        height: 300px;
+        border: 1px solid #ccc;
+        margin-top: 20px;
+        max-width: 900px;
+        margin: 10% auto 10% auto;
+      }
+    </style>
+  </head>
+    <body>
+
+        <h1 style="background-color: #1f1f1f; /* Cor de cabeçalho cinza escuro */
+        color: white;
+        padding: 20px;
+        text-align: center; font-family: 'Object Sans Mono', sans-serif; border-radius: 10px;">Seu código</h1>
+
+        <!-- Container para o editor do CodeMirror -->
+        <div id="editorContainer"></div>
+
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obtém o conteúdo do projeto da query string da URL
+            var queryString = window.location.search;
+            var urlParams = new URLSearchParams(queryString);
+            var projectContent = urlParams.get('content');
+
+            // Cria o editor do CodeMirror com o conteúdo do projeto
+            var editor = CodeMirror(document.getElementById("editorContainer"), {
+                value: projectContent,
+                mode: "javascript",
+                lineNumbers: true,
+                theme: "ayu-dark", // Escolha o tema desejado
+                readOnly: true // Define o editor como somente leitura
+            });
+        });
+        </script>
+    </body>
+</html>

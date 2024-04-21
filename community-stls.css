@@ -1,0 +1,250 @@
+body {
+    font-family: 'Object Sans Mono', sans-serif;
+    background-color: #151515;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+header {
+    display: flex;
+    background-color: #222831; /* Cor de cabeçalho cinza escuro */
+    color: white;
+    padding: 20px 20px;
+}
+.return-button {
+    display: block;
+    width: fit-content;
+    margin: 20px auto; /* Centraliza o botão horizontalmente */
+    padding: 10px 20px;
+    background-color: #0077b5; /* Cor de fundo azul */
+    color: #fff; /* Cor do texto branco */
+    text-decoration: none; /* Remove sublinhado do link */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+#voltarAoTopo {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+nav {
+    background-color: transparent; /* Fundo cinza claro */
+    padding: 10px 0;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+nav a {
+    background-color: #423F3E;
+    color: white; /* Texto preto */
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #171717; /* Borda preta */
+    border-radius: 20px;
+    padding: 5px 10px; /* Padding de 5px no topo e na base, 10px nos lados */
+    transition: background-color 0.3s, color 0.3s;
+    margin: 2px;
+}
+nav a:hover {
+    background-color: green; /* Cor de fundo cinza escuro */
+    color: white;
+    border: 2px solid green;
+}
+#perfil_a {
+    position: absolute; /* Torna o elemento posicionado absolutamente */
+    right: 0; /* Posiciona o elemento 10px da borda direita */
+}
+
+.menu-toggle {
+    position: fixed;
+    display: flex;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 24px;
+    right: 15px;
+}
+.menu-toggle:hover {
+    color: green;
+    transition: .1s;
+}
+.menu-toggle:active {
+    color: #0077b5;
+    transition: 0s;
+}
+
+
+
+.menu {
+    display: none;
+    flex-direction: column;
+    background-color: #0c0c0c;
+    position: absolute;
+    top: 100px;
+    left: auto;
+    right: 0;
+    padding: 20px;
+    width: 200px;
+    border-radius: 15px;
+    height: 100%;
+}
+
+
+.menu.open {
+        display: flex;
+        margin-top: -10px;
+        margin-right: 10px;
+        width: 200px;
+        height: 80%;
+        background: #222831;
+        border: 1px solid white;
+        margin-right: 5px;
+        margin-left: auto;
+        align-items: flex-end;
+        position: fixed;
+        #perfil_a {
+            position: relative;
+        }
+        a {
+            background-color: #0c0c0c;
+            color: white;
+            border: 1px solid #0c0c0c;
+            top: 150px;
+        }
+        a:hover {
+            background-color: green;
+            border: 1px solid green;
+        }
+        #perfil_div {
+            display: flex;
+            left: 62px;
+            top: 160px;
+        }
+        #username_p {
+            margin-top: 45px;
+            margin-left: 15px;
+            color: #0c0c0c;
+        }
+    }
+
+.menu a {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    text-decoration: none;
+    width: 130px;
+    font-size: 18px;
+}
+
+.return-button:hover {
+    background-color: #005183; /* Cor de fundo azul mais escura no hover */
+}
+
+#project-list {
+    display: flex;
+    flex-direction: column;
+    background-color: #423F3E;
+    max-width: 800px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 10px;
+    border-radius: 15px;
+}
+
+/* Regras de mídia para ajustar o layout em tamanhos de tela menores */
+@media screen and (max-width: 800px) {
+    #project-list {
+        padding: 10px;
+        width: 90%;
+    }
+    header {
+        display: flex;
+        top: 0;
+        position: fixed;
+        z-index: 99999;
+        height: 100px;
+        width: 100%;
+        flex-wrap: wrap;
+        font-size: 80%;
+    }
+    h1 {
+        margin-top: 35px;
+    }
+    .return-button {
+        margin-top: 200px;
+    }
+
+    .menu-toggle {
+        margin-top: 32px;
+    }
+    .menu a {
+        font-size: 18px;
+    }
+}
+
+.img_perfil {
+    width: 40px;
+    border-radius: 40px;
+}
+
+#perfil_div {
+    display: flex;
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    justify-content: center;
+    right: 0;
+    top: 0;
+    position: absolute;
+}
+
+#perfil_a {
+    width: 40px;
+    border-radius: 40px;
+}
+
+#username_p {
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #0c0c0c;
+}
+#perfil_a {
+    position: absolute; /* Torna o elemento posicionado absolutamente */
+    right: 0;
+    top: 10px;
+    padding: 3px 3px;
+    justify-content: center;
+    border-radius: 100px;
+    align-items: center;
+}
+
+footer {
+    background-color: black; /* Cor de rodapé cinza escuro */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    margin-top: 20px;
+    flex-shrink: 0; /* Impede que o footer seja reduzido em tamanho */
+    margin-bottom: 0;
+    left: 0;
+}

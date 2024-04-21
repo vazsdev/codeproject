@@ -1,0 +1,539 @@
+@import url('https://fonts.cdnfonts.com/css/object-sans');
+
+body {
+    font-family: 'Object Sans Mono', sans-serif;
+    background-color: #151515;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+header {
+    display: flex;
+    background-color: #222831; /* Cor de cabeçalho cinza escuro */
+    color: white;
+    padding: 20px 20px;
+}
+#divHeader {
+    background-color: #222831;
+    width: 100%;
+}
+#voltarAoTopo {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+nav {
+    background-color: transparent; /* Fundo cinza claro */
+    padding: 10px 0;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+nav a {
+    background-color: #171717;
+    color: white; /* Texto preto */
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #171717; /* Borda preta */
+    border-radius: 20px;
+    padding: 5px 10px; /* Padding de 5px no topo e na base, 10px nos lados */
+    transition: background-color 0.3s, color 0.3s;
+    margin: 5px; /* Espaçamento uniforme entre os botões */
+}
+nav a:hover {
+    background-color: green; /* Cor de fundo cinza escuro */
+    color: white;
+    border: 2px solid green;
+}
+#perfil_a {
+    position: absolute; /* Torna o elemento posicionado absolutamente */
+    right: 0; /* Posiciona o elemento 10px da borda direita */
+}
+
+.menu-toggle {
+    display: flex;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: auto;
+    right: 15px;
+    margin-top: 24px;
+    transition: 0.1s;
+    position: fixed;
+    z-index: 9999;
+}
+.menu-toggle:hover {
+    color: green;
+    transition: .1s;
+}
+.menu-toggle:active {
+    color: #0077b5;
+    transition: 0s;
+}
+
+.menu {
+    display: none;
+    flex-direction: column;
+    background-color: #0c0c0c;
+    position: absolute;
+    top: 100px;
+    left: auto;
+    right: 0;
+    padding: 20px;
+    width: 200px;
+    border-radius: 15px;
+}
+
+.menu.open {
+        display: flex;
+        margin-top: -10px;
+        margin-right: 10px;
+        width: 200px;
+        height: 300px;
+        background: #222831;
+        border: 1px solid white;
+        margin-right: 5px;
+        margin-left: auto;
+        align-items: flex-end;
+        position: fixed;
+        z-index: 9999; /* Define o elemento à frente de todos os outros */
+        
+        .menu-toggle {
+            transform: rotate(45deg);
+        }
+
+        #perfil_a {
+            position: relative;
+        }
+        a {
+            background-color: #0c0c0c;
+            color: white;
+            border: 1px solid #0c0c0c;
+        }
+        a:hover {
+            background-color: green;
+            border: 1px solid green;
+        }
+
+        #perfil_div {
+            display: flex;
+            left: 60px;
+            top: 200px;
+        }
+        #username_p {
+            margin-top: 45px;
+            margin-right: 40px;
+            margin-left: auto;
+            color: #0c0c0c;
+        }
+    }
+
+.menu a {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    text-decoration: none;
+    width: 130px;
+    font-size: 18px;
+}
+
+.code-wrapper {
+    background-color: #272822; /* Cor de fundo */
+    border: 1px solid #3e3d32; /* Borda */
+    border-radius: 5px; /* Cantos arredondados */
+    padding: 10px; /* Espaçamento interno */
+    margin-top: 5px; /* Espaçamento superior */
+    font-family: 'Courier New', Courier, monospace; /* Fonte de código */
+    font-size: 14px; /* Tamanho da fonte */
+    color: #f8f8f2; /* Cor do texto */
+    white-space: pre-wrap; /* Quebra de linha */
+    overflow-x: auto; /* Barra de rolagem horizontal caso necessário */
+}
+
+.code-wrapper::selection {
+    background-color: #f8f8f2; /* Cor de fundo da seleção */
+    color: #272822; /* Cor do texto da seleção */
+}
+
+.code-wrapper::-moz-selection {
+    background-color: #f8f8f2; /* Cor de fundo da seleção no Firefox */
+    color: #272822; /* Cor do texto da seleção no Firefox */
+}
+
+
+
+.return-button {
+    display: block;
+    width: fit-content;
+    margin: 20px auto; /* Centraliza o botão horizontalmente */
+    padding: 10px 30px;
+    background-color: #0077b5; /* Cor de fundo azul */
+    color: #fff; /* Cor do texto branco */
+    text-decoration: none; /* Remove sublinhado do link */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.return-button:hover {
+    background-color: #005183; /* Cor de fundo azul mais escura no hover */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px; /* Definindo a largura máxima do contêiner */
+    margin-left: 10px;
+    margin-right: auto;
+    padding: 20px;
+    background-color: #423F3E; /* Cor de fundo mais suave */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+}
+.project-language label {
+    display: block;
+    margin-bottom: 5px;
+    color: black; /* Cor do texto mais suave */
+}
+
+.project-language-dropdown {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Cor da borda mais suave */
+    border-radius: 5px;
+    background-color: #222831; /* Cor de fundo branca */
+    color: gray; /* Cor do texto mais suave */
+    margin-bottom: 10px;
+}
+
+.project-language-dropdown option {
+    background-color: #222831; /* Cor de fundo branca */
+    color: gray; /* Cor do texto mais suave */
+}
+
+.project-title {
+    text-align: center;
+    color: black; /* Cor do texto mais suave */
+}
+
+.project-name,
+.project-type {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.project-name label,
+.project-type label {
+    display: block;
+    margin-bottom: 5px;
+    color: black; /* Cor do texto mais suave */
+}
+
+.project-name-input,
+.project-type-dropdown,
+.post-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc; /* Cor da borda mais suave */
+    border-radius: 5px;
+    background-color: #222831; /* Cor de fundo branca */
+    color: gray; /* Cor do texto mais suave */
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Garante que o padding não aumente a largura */
+}
+
+.project-desc label {
+    display: block;
+    margin-bottom: 5px;
+    color: black; /* Cor do texto mais suave */
+}
+#project-desc-input {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 200px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc; /* Cor da borda mais suave */
+    border-radius: 5px;
+    background-color: #222831; /* Cor de fundo branca */
+    color: black; /* Cor do texto mais suave */
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Garante que o padding não aumente a largura */
+    min-height: 200px;
+    font-family: 'Object Sans Mono', sans-serif;
+}
+
+.post {
+    color: #222831;
+    background-color: #0c0c0c;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px); /* Ajusta o tamanho para 1/3 da largura da tela com uma margem de 20px */
+    transition: box-shadow 0.3s; /* Adiciona uma transição suave para a sombra */
+}
+
+.post:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Aumenta a sombra quando o projeto é destacado */
+}
+
+.post h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.post .edit-link {
+    color: #007bff; /* Azul para o link "Editar" */
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin-top: 10px;
+}
+
+.post .edit-link:hover {
+    text-decoration: underline;
+}
+
+.post-button {
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #0077b5; /* Cor de fundo azul */
+    color: #fff; /* Cor do texto branco */
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.post-button:hover {
+    background-color: #005183; /* Cor de fundo azul mais escura no hover */
+}
+
+.post-list {
+    position: relative; /* Adiciona posição relativa para posicionar o pseudoelemento */
+    margin-bottom: 20px;
+    padding-left: 10px; /* Adiciona um espaçamento à esquerda para a linha colorida */
+}
+
+.post-list::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: #222831;
+}
+
+.clear-projects-button {
+    background-color: #dc3545; /* Vermelho */
+    color: #fff; /* Texto branco */
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 130px;
+    position: absolute;
+    right: 0;
+}
+
+.clear-projects-button:hover {
+    background-color: #c82333; /* Vermelho mais escuro ao passar o mouse */
+}
+
+/* Adicione estas regras para centralizar o editor de código */
+.CodeMirror {
+    width: 100%; /* Ocupa toda a largura disponível */
+    min-height: 500px; /* Altura mínima */
+    transition: width 1s, height 1s; /* Adiciona uma transição suave de 1 segundo */
+}
+
+/* Regras de mídia para ajustar o layout em tamanhos de tela menores */
+@media screen and (max-width: 820px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .side_container {
+        display: flex;
+        padding: 10px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .container {
+        padding: 10px; /* Reduz o preenchimento em telas menores */
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px
+    }
+    .post-button {
+        margin-bottom: 100px; /* Aumenta a margem inferior do botão em telas menores */
+    }
+
+    header {
+        display: flex;
+        top: 0;
+        position: fixed;
+        z-index: 9999;
+        height: 100px;
+        width: 100%;
+        flex-wrap: wrap;
+        font-size: 80%;
+    }
+    h1 {
+        margin-top: 35px;
+    }
+    .return-button {
+        margin-top: 200px;
+    }
+
+    .menu-toggle {
+        margin-top: 32px;
+    }
+    .menu a {
+        font-size: 18px;
+    }
+}
+
+/* Estilos para as abas */
+.tabs {
+    display: flex;
+    overflow: hidden;
+    border-bottom: 1px solid #423F3E;
+    background-color: #423F3E;
+    position: relative;
+}
+
+.tablink {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    background-color: #66615f;
+    width: max-content;
+    border-radius: 10px 10px 0 0;
+}
+
+.tablink:hover {
+    background-color: #595B83;
+}
+.selecionado {
+    background-color: #222831;
+    color: white;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    background-color: #222831;
+    border: none;
+    border-radius: 0 10px 10px 10px;
+}
+
+/* Estilos para o conteúdo dos projetos */
+.project-list {
+    margin-top: 20px;
+}
+
+.img_perfil {
+    width: 40px;
+    border-radius: 40px;
+}
+
+#perfil_div {
+    display: flex;
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    justify-content: center;
+    right: 0;
+    top: 0;
+    position: absolute;
+}
+
+#perfil_a {
+    width: 40px;
+    border-radius: 40px;
+}
+
+#username_p {
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #0c0c0c;
+}
+#perfil_a {
+    position: absolute; /* Torna o elemento posicionado absolutamente */
+    right: 0;
+    top: 10px;
+    padding: 3px 3px;
+    justify-content: center;
+    border-radius: 100px;
+    align-items: center;
+}
+
+
+footer {
+    background-color: black; /* Cor de rodapé cinza escuro */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+    position: static;
+}
+
+.side_container {
+    display: grid;
+    background-color: #423F3E;
+    width: 350px;
+    height: 100%;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.main {
+    display: flex;
+}
+
+#teste {
+    margin: 5%;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #222831;
+    background-color: #222831;
+    font-size: 20px;
+    font-family: 'Object Sans Mono', sans-serif;
+}
+#teste:hover {
+    background-color: #595B83;
+    border: 1px solid #595B83;
+}
