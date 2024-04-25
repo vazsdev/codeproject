@@ -16,30 +16,34 @@ header {
     background-color: #222831;
     color: white;
 }
-nav {
-    background-color: transparent; /* Fundo cinza claro */
-    padding: 10px 0;
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-}
-nav a {
-    background-color: #171717;
-    color: white; /* Texto preto */
-    text-decoration: none;
-    font-weight: bold;
-    border: 2px solid #171717; /* Borda preta */
-    border-radius: 20px;
-    padding: 5px 10px; /* Padding de 5px no topo e na base, 10px nos lados */
-    transition: background-color 0.3s, color 0.3s;
-    margin: 5px; /* Espaçamento uniforme entre os botões */
-}
-nav a:hover {
-    background-color: green; /* Cor de fundo cinza escuro */
-    color: white;
-    border: 2px solid green;
-}
+
+/* nav */
+    nav {
+        background-color: transparent; /* Fundo cinza claro */
+        padding: 10px 0;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+    }
+    nav a {
+        background-color: transparent;
+        color: white; /* Texto preto */
+        text-decoration: none;
+        font-weight: bold;
+        border: 1px solid #171717; /* Borda preta */
+        border-radius: 20px;
+        padding: 5px 10px; /* Padding de 5px no topo e na base, 10px nos lados */
+        transition: background-color 0.3s, color 0.3s;
+        margin: 5px; /* Espaçamento uniforme entre os botões */
+    }
+    nav a:hover {
+        background-color: rgba(0, 128, 0, 0.685); /* Cor de fundo cinza escuro */
+        color: white;
+        border: 1px solid green;
+    }
+
+
 #perfil_a {
     position: absolute; /* Torna o elemento posicionado absolutamente */
     right: 0;
@@ -49,6 +53,7 @@ nav a:hover {
     border-radius: 100px;
     align-items: center;
 }
+
 .container {
     background-color: #222831;
     color: white;
@@ -57,16 +62,20 @@ nav a:hover {
     max-width: 800px;
     margin: 5% auto;
 }
-h1 {
-    text-align: center;
-}
-h2 {
-    text-align: center;
-}
-p {
-    text-indent: 10%;
-    text-align: justify;
-}
+
+
+    h1 {
+        text-align: center;
+    }
+    h2 {
+        text-align: center;
+    }
+    p {
+        text-indent: 10%;
+        text-align: justify;
+    }
+
+
 #wlcm_h1 {
     text-align: center;
     margin-top: 8%;
@@ -79,65 +88,71 @@ p {
     font-size: 24px;
 }
 
-.menu-toggle {
-    display: none;
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: #0c0c0c;
-    cursor: pointer;
-}
-
-.menu {
-    display: flex;
-}
-
-.menu a {
-    margin-right: 20px;
-    color: white;
-    text-decoration: none;
-}
-
-@media (max-width: 768px) {
-    .menu {
-        display: none;
-        flex-direction: column;
-        background-color: #eee;
-        position: absolute;
-        top: 100px;
-        left: auto;
-        right: 0;
-        padding: 20px;
-        width: 200px;
-        border-radius: 10px;
-    }
-
-    .menu.open {
-        display: flex;
-        background-color: #222831;
-        backdrop-filter: blur(5.5px);
-        -webkit-backdrop-filter: blur(5.5px);
-        border: 1px solid white;
-        height: 300px;
-        #perfil_a {
-            position: relative;
-        }
-        #perfil_div {
-            display: flex;
-            left: 60px;
-            top: 200px;
-        }
-        #username_p {
-            margin-top: 45px;
-            margin-right: 40px;
-            margin-left: auto;
-            color: black;
-        }
-    }
+/* menu */
     .menu-toggle {
-        display: block;
+        display: none;
+        font-size: 24px;
+        background: none;
+        border: none;
+        color: #0c0c0c;
+        cursor: pointer;
     }
-}
+
+    .menu {
+        display: flex;
+    }
+
+    .menu a {
+        margin-right: 20px;
+        color: white;
+        text-decoration: none;
+    }
+
+
+
+/* small screens */
+    @media (max-width: 768px) {
+        .menu {
+            display: none;
+            flex-direction: column;
+            background-color: #eee;
+            position: absolute;
+            top: 100px;
+            left: auto;
+            right: 0;
+            padding: 20px;
+            width: 200px;
+            border-radius: 10px;
+        }
+
+        .menu.open {
+            display: flex;
+            background-color: #222831;
+            backdrop-filter: blur(5.5px);
+            -webkit-backdrop-filter: blur(5.5px);
+            border: 1px solid white;
+            height: 300px;
+            #perfil_a {
+                position: relative;
+            }
+            #perfil_div {
+                display: flex;
+                left: 60px;
+                top: 200px;
+            }
+            #username_p {
+                margin-top: 45px;
+                margin-right: 40px;
+                margin-left: auto;
+                color: black;
+            }
+        }
+        .menu-toggle {
+            display: block;
+        }
+    }
+
+
 
 .img_perfil {
     width: 40px;
@@ -167,14 +182,15 @@ p {
     margin-right: auto;
 }
 
-
-footer {
-    background-color: #080808; /* Cor de rodapé cinza escuro */
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    margin-top: 100px;
-}
+/* footer */ 
+        
+    footer {
+        background-color: #080808; /* Cor de rodapé cinza escuro */
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        margin-top: 100px;
+    }

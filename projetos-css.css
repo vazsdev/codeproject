@@ -121,12 +121,21 @@ nav a:hover {
             position: relative;
         }
         a {
-            background-color: #0c0c0c;
+            background-color: transparent;
             color: white;
             border: 1px solid #0c0c0c;
+            width: 90%;
+        }
+        #projetos_a_select {
+            background-color: rgba(0, 128, 0, 0.685);
+            border: 1px solid lime;
+            cursor: pointer;
+        }
+        #projetos_a_select:hover {
+            border: 1px solid green;
         }
         a:hover {
-            background-color: green;
+            background-color: rgba(0, 128, 0, 0.685);
             border: 1px solid green;
         }
 
@@ -138,8 +147,8 @@ nav a:hover {
         #username_p {
             margin-top: 45px;
             margin-right: 40px;
-            margin-left: auto;
-            color: #0c0c0c;
+            margin-left: 15px;
+            color: green;
         }
     }
 
@@ -198,7 +207,7 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     max-width: 800px; /* Definindo a largura máxima do contêiner */
-    margin-left: 10px;
+    margin-left: auto;
     margin-right: auto;
     padding: 20px;
     background-color: #423F3E; /* Cor de fundo mais suave */
@@ -376,10 +385,56 @@ nav a:hover {
         margin-left: auto;
         margin-right: auto;
     }
-    .side_container {
+    .container {
+        padding: 10px; /* Reduz o preenchimento em telas menores */
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px
+    }
+    .post-button {
+        margin-bottom: 100px; /* Aumenta a margem inferior do botão em telas menores */
+    }
+
+    header {
         display: flex;
-        padding: 10px;
+        top: 0;
+        position: fixed;
+        z-index: 9999;
+        height: 100px;
+        width: 100%;
+        flex-wrap: wrap;
+        font-size: 70%;
+    }
+    h1 {
+        margin-top: 35px;
+    }
+    .return-button {
+        margin-top: 200px;
+    }
+
+    .menu-toggle {
+        margin-top: 32px;
+    }
+    .menu.open a {
+        background-color: transparent;
+        font-size: 18px;
         width: 90%;
+    }
+    .menu.open #username_p {
+        font-size: 15px;
+        margin-left: 15px;
+        color: green;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        justify-content: center;
         margin-left: auto;
         margin-right: auto;
     }
@@ -402,7 +457,7 @@ nav a:hover {
         height: 100px;
         width: 100%;
         flex-wrap: wrap;
-        font-size: 80%;
+        font-size: 70%;
     }
     h1 {
         margin-top: 35px;
@@ -414,8 +469,15 @@ nav a:hover {
     .menu-toggle {
         margin-top: 32px;
     }
-    .menu a {
+    .menu.open a {
+        background-color: transparent;
         font-size: 18px;
+        width: 90%;
+    }
+    .menu.open #username_p {
+        font-size: 15px;
+        margin-left: 15px;
+        color: green;
     }
 }
 
@@ -522,6 +584,7 @@ footer {
 
 .main {
     display: flex;
+    flex-direction: column;
 }
 
 #teste {

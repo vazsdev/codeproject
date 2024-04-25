@@ -48,7 +48,7 @@ nav {
     margin: auto;
 }
 nav a {
-    background-color: #423F3E;
+    background-color: transparent;
     color: white; /* Texto preto */
     text-decoration: none;
     font-weight: bold;
@@ -110,7 +110,7 @@ nav a:hover {
         margin-top: -10px;
         margin-right: 10px;
         width: 200px;
-        height: 80%;
+        height: 300px;
         background: #222831;
         border: 1px solid white;
         margin-right: 5px;
@@ -121,19 +121,20 @@ nav a:hover {
             position: relative;
         }
         a {
-            background-color: #0c0c0c;
+            background-color: transparent;
             color: white;
             border: 1px solid #0c0c0c;
             top: 150px;
+            width: 90%;
         }
         a:hover {
-            background-color: green;
+            background-color: rgba(0, 128, 0, 0.685);
             border: 1px solid green;
         }
         #perfil_div {
             display: flex;
             left: 62px;
-            top: 160px;
+            top: 200px;
         }
         #username_p {
             margin-top: 45px;
